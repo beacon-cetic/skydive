@@ -1,0 +1,569 @@
+html, body {
+  width:100%;
+  height:100%;
+}
+
+body {
+  margin: auto;
+  padding-top: 50px;
+  background-color: #333;
+}
+
+select {
+  color: #111;
+}
+
+label {
+  color: #ffffff;
+}
+
+.mode {
+  color: white;
+  font-size: 0.6em;
+  vertical-align: super;
+}
+
+.topology, .conversation, .discovery {
+  width: 100%;
+  height: 100%;
+}
+
+.topology-d3, .conversation-d3, .discovery-d3 {
+  width: 100%;
+  text-align: center;
+  padding-top: 5px;
+  outline: none;
+}
+
+.topology-d3 {
+  margin-top: 15px;
+  height: 90%;
+}
+
+.node-selection {
+  cursor: crosshair;
+}
+
+.node {
+  fill: lightsteelblue;
+  stroke: #888;
+  stroke-width: 1;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.node-selection .node {
+  cursor: crosshair !important;
+}
+
+.node-invalid-selection .node {
+  cursor: not-allowed !important;
+}
+
+#node-id {
+  cursor: default;
+}
+
+text {
+  fill: #111;
+  pointer-events: none;
+  font: 12px Helvetica, Arial, sans-serif;
+  stroke-width: 0;
+}
+
+.row text, .column text {
+  font: 12px Helvetica, Arial, sans-serif;
+  fill: #eee;
+}
+
+.row text.active, .column text.active{
+  fill: red;
+}
+
+.row line, .column line {
+  stroke: #fff;
+}
+
+.default circle {
+  fill: rgb(199, 233, 192);
+}
+
+.host circle {
+  fill: #b5ffc5
+}
+
+.ovsbridge, .bridge circle {
+  fill: rgb(198, 219, 239);
+}
+
+.ovsport, .bond circle {
+  fill: rgb(253, 208, 162);
+}
+
+.down circle {
+  fill: rgb(255, 26, 0);
+}
+
+.alert circle {
+  fill: rgb(255, 255, 0);
+}
+
+.highlighted circle {
+  fill: yellow;
+}
+
+.active circle {
+  stroke: white;
+  stroke-width: 3;
+}
+
+.link {
+  fill: none;
+}
+
+.links .veth {
+  stroke-width: 3;
+  stroke-dasharray: 5,5;
+}
+
+.links .layer2 {
+  stroke: #333;
+}
+
+.links .local2fabric {
+  stroke-width: 3;
+  stroke: #eee;
+}
+
+.links .ownership {
+  stroke: #080;
+  /* comment to see ownership link */
+  display: none;
+}
+
+.nodes .state {
+  opacity: 0.7;
+}
+
+.nodes .manager {
+  opacity: 0.9;
+}
+
+path.group {
+  fill: lightsteelblue;
+  fill-opacity: 0.5;
+  pointer-events: none;
+  font: 16px Helvetica, Arial, sans-serif;
+  stroke-width: 5;
+}
+
+.groups path.fabric {
+    fill: #fff;
+}
+
+.groups path.host {
+  fill: #d0d0d0;
+}
+
+.groups path.netns {
+  fill: #e6e6e6;
+}
+
+.groups path.vm {
+  fill: #e9ffd9;
+}
+
+.pane-label {
+  position: absolute;
+  z-index: 99;
+  padding: 0;
+  font-size: 80%;
+  opacity: .4;
+  right: 15px;
+  bottom: 15px;
+  margin: 0;
+}
+
+.cont {
+  width:100%;
+  height: 100%
+}
+
+.content {
+  padding-left: 0px;
+  padding-right: 0px;
+  overflow: auto;
+}
+
+.info {
+  border-left: 5px #222 solid;
+  color: #fff;
+  padding-top: 5px;
+  overflow: auto;
+}
+
+.main-toolbar {
+  background-color: #111;
+  height: 65px;
+  padding-top: 28px;
+}
+
+.main-toolbar .tooltip-inner {
+  background-color: #333;
+}
+
+.main-toolbar .slider.slider-horizontal {
+  width: 400px;
+}
+
+.fill {
+  height: 100%;
+}
+
+.ui-resizable {
+  position: relative;
+}
+
+.ui-resizable-handle {
+  font-size: 0.1px;
+}
+
+.ui-resizable-e {
+  right: 0px;
+}
+
+.jsonview .num {
+  color: yellow;
+}
+
+.jsonview .string {
+  color: #aaa;
+}
+
+.jsonview {
+  font-size: 0.9em;
+}
+
+.jsonview ul {
+  margin: 0 0 0 1em;
+}
+
+.left-cont {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.left-panel {
+  border-radius: 5px;
+  background-color: #222;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.sub-left-panel {
+  overflow: auto;
+  border-radius: 5px;
+  background-color: #111;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#capture {
+  font-size: 1.2em;
+}
+
+ul.capture-list {
+  list-style-type: none;
+  padding: 0px;
+}
+
+li.capture-item {
+  padding: 0px;
+  padding-bottom: 10px;
+}
+
+.capture-item dl {
+  margin-bottom: 0px;
+}
+
+.capture-item dt {
+  width: 60px;
+}
+
+.capture-item dd {
+  margin-left: 70px;
+}
+
+.capture-item dd.query {
+  font-family: monospace;
+  font-size: 11px;
+  background: #333;
+  border-radius: 3px;
+  word-break: break-all
+}
+
+.capture-title {
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.capture-delete {
+  float: right;
+  color: #a94442 !important;
+  cursor: pointer;
+  font-size: 1.3em;
+  font-style: normal;
+}
+
+.inject-target {
+  margin-bottom: 5px;
+}
+
+.passive-capture-title {
+  color: grey
+}
+
+.title-left-panel {
+  font-size: 1.2em;
+  padding-bottom: 5px;
+  color: #fff;
+}
+
+.sub-left-panel .title-left-panel {
+  font-size: 1.1em;
+}
+
+.title-capture-switch {
+  float: right;
+  display: none;
+}
+
+#flows {
+  clear: both;
+}
+
+.bootstrap-switch {
+  color: black;
+}
+
+.bootstrap-switch .bootstrap-switch-label {
+  background: #333;
+}
+
+.bootstrap-switch-skydive-on {
+  background-color: rgb(199, 233, 192);
+}
+
+.bootstrap-switch-skydive-off {
+  background-color: rgb(253, 208, 162);
+}
+
+.bootstrap-switch-label {
+  color: white;
+}
+
+circle.manager {
+  opacity: 0.9;
+  fill: #111;
+  stroke: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin h2 {
+  color: white;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#sequence text {
+  font-weight: 600;
+  fill: #fff;
+}
+
+.form-control + .fa-crosshairs {
+  color: black;
+  font-size: 1.3em;
+  left: 0;
+}
+
+.form-control:focus + .fa-crosshairs {
+  color: #66afe9;
+}
+
+.has-left-icon{
+  /*Left padding 20px in this case, but it could be different due to other settings - for example in my project it was 25 pixels*/
+  padding-left: 30px !important;
+  padding-right: 10px !important;
+}
+
+#flowgrid {
+  font-size: 12px;
+  background: silver;
+}
+
+#flowgrid .slick-cell {
+  cursor: pointer;
+  background: #111;
+  color: white;
+}
+
+#flowgrid .toggle {
+  height: 9px;
+  width: 9px;
+  display: inline-block;
+}
+
+#flowgrid .toggle.expand {
+  background: url(/statics/img/expand.gif) no-repeat center center;
+}
+
+#flowgrid .toggle.collapse {
+  background: url(/statics/img/collapse.gif) no-repeat center center;
+}
+
+#flowgrid .cell-metric {
+  text-align: right;
+}
+
+#flowgrid .cell-highlighted {
+  background-color: yellow;
+  color: black;
+}
+
+#flowgrid .slick-header-columns {
+    padding-left: 1px;
+}
+
+#flowgrid .slick-header-column {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+
+#flowgrid .slick-header-column.ui-state-default {
+  height: 22px;
+}
+
+#flowgrid .slick-cell {
+  border-right: 1px solid silver
+}
+
+#flowgrid .l0 {
+  border-left: 1px solid silver;
+}
+
+.button-wrapper .btn {
+    margin:2px;
+}
+
+.topology-control-container {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  height: 80px;
+  width: 80px;
+}
+
+.topology-control-container .btn-group-vertical {
+  z-index: 999;
+  position:relative;
+}
+
+.topology-control-container .button-wrapper {
+  text-align: center;
+}
+
+.flow-ops-panel .tab-content {
+  color : white;
+  background-color: #222;
+}
+
+.flow-ops-panel .nav>li>a {
+  color : white;
+}
+
+.flow-ops-panel .nav-pills > li > a {
+  background-color: #111;
+  border-radius: 0;
+}
+
+.flow-ops-panel .nav-pills>li.active>a, .flow-ops-panel .nav-pills>li.active>a:focus, .flow-ops-panel .nav-pills>li.active>a:hover {
+  background-color: #222;
+}
+
+.flow-ops-panel .left-cont {
+  margin-top: 0px;
+}
+
+.slowmotion-effect-in {
+  -webkit-filter: grayscale(100%);
+  -webkit-transition: 1s ease-in-out;
+  -moz-filter: grayscale(100%);
+  -moz-transition: 1s ease-in-out;
+  -o-filter: grayscale(100%);
+  -o-transition: 1s ease-in-out;
+  filter: grayscale(100%);
+}
+
+.slowmotion-effect-out {
+  -webkit-filter: grayscale(0%);
+  -webkit-transition: 1.5s ease-in-out;
+  -moz-filter: grayscale(0%);
+  -moz-transition: 1.5s ease-in-out;
+  -o-filter: grayscale(0%);
+  -o-transition: 1.5s ease-in-out;
+  filter: grayscale(0%);
+}
+
+.slide-enter-active {
+  transition: all .2s ease;
+}
+.slide-leave-active {
+  transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-enter, .slide-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  transform: translateX(300px);
+  opacity: 0;
+}
