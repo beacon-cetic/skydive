@@ -677,7 +677,7 @@ Layout.prototype.EdgeOpacity = function(d) {
 };
 
 Layout.prototype.NodeManagerPicto = function(d) {
-    if (d.metadata.Name.startsWith("SFC")) {
+    if (d.Metadata.Name.startsWith("SFC")) {
         return sfcImg;
     }
     switch(d.Metadata.Manager) {
