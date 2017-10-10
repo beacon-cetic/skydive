@@ -58,23 +58,6 @@ type SFCMapper struct {
 	nsRegexp        *regexp.Regexp
 }
 
-type Attributes struct {
-	PortID      string
-	NetworkID   string
-	NetworkName string
-	TenantID    string
-	IPs         string
-	VNI         string
-}
-
-type SFCPortNotFound struct {
-	MAC string
-}
-
-type PortMetadata struct {
-	mac    string
-	portID string
-}
 
 func (e SFCPortNotFound) Error() string {
 	return "Unable to find port for MAC address: " + e.MAC
@@ -202,7 +185,7 @@ func (mapper *SFCMapper) updateNode(node *graph.Node, attrs *Attributes) {
 	mapper.graph.Lock()
 	defer mapper.graph.Unlock()
 
-	metadata := map[string]interface{}{"Manager": "sfc"}
+	metadata := map[string]interface{}{"Manager": "neutron"}
 
 	if attrs.PortID != "" {
 		metadata["SFC/PortID"] = attrs.PortID
@@ -280,7 +263,7 @@ func (mapper *SFCMapper) EnhanceNode(node *graph.Node) {
 	}
 
 	if mapper.nsRegexp.MatchString(name.(string)) {
-		mapper.graph.AddMetadata(node, "Manager", "sfc")
+		mapper.graph.AddMetadata(node, "Manager", "neutron")
 		return
 	}
 
@@ -325,7 +308,7 @@ func (mapper *SFCMapper) Stop() {
 }
 
 func NewSFCMapper(g *graph.Graph, wsClient *shttp.WSAsyncClient, authURL, username, password, tenantName, regionName, domainName string, availability gophercloud.Availability) (*SFCMapper, error) {
-	// only looking for interfaces matching the following regex as nova, sfc interfaces match this pattern
+	// only looking for interfaces matching the following regex as nova, neutron interfaces match this pattern
 	intfRegexp := regexp.MustCompile(`(tap|qr-|qg-|qvo)[a-fA-F0-9]{8}-[a-fA-F0-9]{2}`)
 	nsRegexp := regexp.MustCompile(`(qrouter|qdhcp)-[a-fA-F0-9]{8}`)
 
@@ -346,7 +329,7 @@ func NewSFCMapper(g *graph.Graph, wsClient *shttp.WSAsyncClient, authURL, userna
 	}
 
 	client, err := openstack.NewNetworkV2(provider, gophercloud.EndpointOpts{
-		Name:         "sfc",
+		Name:         "neutron",
 		Region:       regionName,
 		Availability: availability,
 	})
