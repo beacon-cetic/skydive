@@ -677,14 +677,13 @@ Layout.prototype.EdgeOpacity = function(d) {
 };
 
 Layout.prototype.NodeManagerPicto = function(d) {
-    if (d.Metadata.Name.startsWith("SFC")) {
-        return sfcImg;
-    }
     switch(d.Metadata.Manager) {
         case "docker":
             return dockerImg;
         case "neutron":
             return neutronImg;
+        case "sfc":
+            return sfcImg;
     }
 };
 
