@@ -66,7 +66,7 @@ func (e SFCPortNotFound) Error() string {
 	return "Unable to find port for MAC address: " + e.MAC
 }
 
-func retrievePortMetadata(metadata graph.Metadata) PortMetadata {
+func retrieveSFCPortMetadata(metadata graph.Metadata) PortMetadata {
 	md := PortMetadata{}
 
 	// We prefer to use the 'ExtID/attached-mac' metadata to get
@@ -167,7 +167,7 @@ func (mapper *SFCMapper) nodeUpdater() {
 			continue
 		}
 
-		portMd := retrievePortMetadata(node.Metadata())
+		portMd := retrieveSFCPortMetadata(node.Metadata())
 
 		attrs, err := mapper.retrieveAttributes(portMd)
 		if err != nil {
@@ -280,7 +280,7 @@ func (mapper *SFCMapper) EnhanceNode(node *graph.Node) {
 	}
 
 	portMdCache, f := mapper.cache.Get(mac.(string))
-	portMdNode := retrievePortMetadata(md)
+	portMdNode := retrieveSFCPortMetadata(md)
 
 	// If port metadatas have not changed, we return
 	if f && (portMdCache == portMdNode) {
