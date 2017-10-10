@@ -58,6 +58,9 @@ type SFCMapper struct {
 	nsRegexp        *regexp.Regexp
 }
 
+type SFCPortNotFound struct {
+	MAC string
+}
 
 func (e SFCPortNotFound) Error() string {
 	return "Unable to find port for MAC address: " + e.MAC
