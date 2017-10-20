@@ -65,6 +65,10 @@ Node.prototype.IsCaptureOn = function() {
   return "State/FlowCapture" in this.Metadata && this.Metadata["State/FlowCapture"] == "ON";
 };
 
+Node.prototype.IsSFC = function() {
+  return "CaptureName" in this.Metadata && this.Metadata["CaptureName"].indexOf("SFC")!=-1;
+};
+
 Node.prototype.IsCaptureAllowed = function() {
   var allowedTypes = ["device", "veth", "ovsbridge", "internal", "tun", "bridge"];
   return allowedTypes.indexOf(this.Metadata.Type) >= 0;
@@ -724,6 +728,15 @@ Layout.prototype.NodePicto = function(d) {
 };
 
 Layout.prototype.NodeProbeStatePicto = function(d) {
+  if (d.isSFC())
+    switch (d.Metadata.CaptureName) {
+        case "SFC-DPI":
+            return dpiImg;
+        case "SFC-Firewall":
+            return shieldImg;
+        default:
+            return sfcImg
+    }
   if (d.IsCaptureOn())
     return probeIndicatorImg;
   return "";

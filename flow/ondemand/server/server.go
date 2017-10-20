@@ -192,6 +192,7 @@ func (o *OnDemandProbeServer) OnMessage(msg shttp.WSMessage) {
 					t := o.Graph.StartMetadataTransaction(n)
 					t.AddMetadata("State/FlowCapture", "ON")
 					t.AddMetadata("CaptureID", query.Capture.UUID)
+					t.AddMetadata("CaptureName", query.Capture.Name)
 					t.Commit()
 				}
 			}
