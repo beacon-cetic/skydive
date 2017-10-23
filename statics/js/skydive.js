@@ -735,7 +735,7 @@ Layout.prototype.NodeProbeStatePicto = function(d) {
             return dpiImg;
     if (d.Metadata.CaptureName.indexOf("Firewall")!=-1)
             return shieldImg;
-    return sfcImg
+    return sfcImg;
     }
   if (d.IsCaptureOn())
     return probeIndicatorImg;
