@@ -730,7 +730,7 @@ Layout.prototype.NodePicto = function(d) {
 };
 
 Layout.prototype.NodeProbeStatePicto = function(d) {
-  if (d.IsSFC())
+  if (d.IsSFC()){
     if (d.Metadata.CaptureName.indexOf("DPI")!=-1)
             return dpiImg;
     if (d.Metadata.CaptureName.indexOf("Firewall")!=-1)
