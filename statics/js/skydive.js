@@ -34,6 +34,8 @@ var probeIndicatorImg = 'statics/img/media-record.png';
 var pinIndicatorImg = 'statics/img/pin.png';
 var trashImg = 'statics/img/trash.png';
 var sfcImg= 'statics/img/sfc.png';
+var shieldImg= 'statics/img/shield.png';
+var dpiImg= 'statics/img/dpi.png';
 
 var alerts = {};
 
@@ -728,7 +730,7 @@ Layout.prototype.NodePicto = function(d) {
 };
 
 Layout.prototype.NodeProbeStatePicto = function(d) {
-  if (d.isSFC())
+  if (d.IsSFC())
     switch (d.Metadata.CaptureName) {
         case "SFC-DPI":
             return dpiImg;
