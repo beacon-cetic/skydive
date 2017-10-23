@@ -201,6 +201,7 @@ func (o *OnDemandProbeServer) OnMessage(msg shttp.WSMessage) {
 				metadata := n.Metadata()
 				metadata["State/FlowCapture"] = "OFF"
 				delete(metadata, "CaptureID")
+				delete(metadata, "CaptureName")
 				o.Graph.SetMetadata(n, metadata)
 			}
 		}
