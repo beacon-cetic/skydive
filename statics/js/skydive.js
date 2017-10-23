@@ -731,13 +731,11 @@ Layout.prototype.NodePicto = function(d) {
 
 Layout.prototype.NodeProbeStatePicto = function(d) {
   if (d.IsSFC())
-    switch (d.Metadata.CaptureName) {
-        case "SFC-DPI":
+    if (d.Metadata.CaptureName.indexOf("DPI")!=-1)
             return dpiImg;
-        case "SFC-Firewall":
+    if (d.Metadata.CaptureName.indexOf("Firewall")!=-1)
             return shieldImg;
-        default:
-            return sfcImg
+    return sfcImg
     }
   if (d.IsCaptureOn())
     return probeIndicatorImg;
